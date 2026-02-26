@@ -1,0 +1,79 @@
+# ============================================
+# Visual Studio / .NET .gitignore
+# ============================================
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# Visual Studio files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+**/packages/*
+
+# Rider / JetBrains
+.idea/
+
+# Test results
+TestResult*/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Temporary files
+~$*
+*.tmp
+*.bak
+*.swp
+
+# Publish output
+publish/
+out/
+wwwroot/
+dist/
+
+# Database / local data
+*.mdf
+*.ldf
+*.db
+*.db-shm
+*.db-wal
+
+# Environment / secrets
+.env
+appsettings.*.json
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+.DS_Store
+Icon?
+desktop.ini
+
+# Python (if used in mixed projects)
+__pycache__/
+*.pyc
