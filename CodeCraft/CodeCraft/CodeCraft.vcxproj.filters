@@ -29,5 +29,8 @@
     <ClInclude Include="include\mainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\utlis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\mainMenu.h" />
+    <ClInclude Include="include\utlis.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
