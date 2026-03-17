@@ -62,3 +62,54 @@ static void myResults(const Account& user) {
     }
     waitEnter();
 }
+
+// -- Main menu ------------------------------------------------
+static void mainMenu(const Account& user,
+    const vector<Question>& bank) {
+    while (true) {
+        int c = menuSelect(
+            "MAIN MENU",
+            { "View Lessons",
+             "Practice Mode",
+             "Take a Test",
+             "My Results",
+             "Global Statistics",
+             "Logout" },
+            "Logged in as: " + user.name
+        );
+        switch (c) {
+        case 0: lessonMenu();             break;
+        case 1: practiceMode(bank);       break;
+        case 2: {
+            vector<Question> test = generateTest(bank);
+            TestResult result = runTest(test, user);
+            cls();
+            bTop("SAVING RESULT");
+            bBlank();
+            if (saveResult(result))
+                bRow(cen("Result saved!"), C_OK);
+            else
+                bRow(cen("Could not save result (check data/ folder)."), C_ERR);
+            bBlank();
+            waitEnter();
+            break;
+        }
+        case 3: myResults(user);          break;
+        case 4: showStats();              break;
+        case 5: return;
+        }
+    }
+}
+
+// -- Entry point ----------------------------------------------
+int main() {
+    ensureData();
+    initConsole();
+
+    vector<Question> bank = makeBank();
+
+    while (true) {
+        Account user = authScreen();
+        mainMenu(user, bank);
+    }
+}
