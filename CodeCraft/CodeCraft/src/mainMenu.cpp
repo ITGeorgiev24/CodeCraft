@@ -1,10 +1,10 @@
-#include "utils.h"
-#include "account.h"
-#include "question.h"
-#include "lesson.h"
-#include "quiz.h"
-#include "statistics.h"
-#include "student.h"
+#include "../include/utils.h"
+#include "../include/account.h"
+#include "../include/question.h"
+#include "../include/lesson.h"
+#include "../include/quiz.h"
+#include "../include/statistics.h"
+#include "../include/student.h"
 #include <iostream>
 #include <cstdlib>
 #include <limits>
