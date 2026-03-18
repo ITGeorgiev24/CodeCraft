@@ -74,3 +74,37 @@ vector<Question> makeBank() {
                        {"All reals","All reals except 0","x>0","x>=0"}, 1, Category::FUNCTIONS, 2},
                   {23, "If f(x) = |x|,  what is f(-7)?",
                        {"-49","-7","0","7"},                            3, Category::FUNCTIONS, 2},
+
+                       // -- PROBABILITY  (4 questions, 3 pts each) -------------
+{24, "Probability of rolling a 6 on a fair die?",
+     {"1/2","1/3","1/4","1/6"},                       3, Category::PROBABILITY, 3},
+{25, "P(A)=0.3, P(B)=0.4, P(A and B)=0.1.  Find P(A or B).",
+     {"0.5","0.6","0.7","0.8"},                       1, Category::PROBABILITY, 3},
+{26, "Probability of drawing an Ace from 52 cards?",
+     {"1/52","1/26","1/13","1/4"},                    2, Category::PROBABILITY, 3},
+{27, "Bag: 3 red, 7 blue balls. P(red)?",
+     {"0.3","0.7","3/7","7/3"},                       0, Category::PROBABILITY, 3},
+
+     // -- NUMBER THEORY  (6 questions, 1 pt each) ------------
+     {28, "Is 17 a prime number?",
+          {"No, composite","Yes, prime","Neither","Only if 17>10"},
+                                                           1, Category::NUMBER_THEORY, 1},
+     {29, "LCM of 4 and 6?",
+          {"2","8","12","24"},                             2, Category::NUMBER_THEORY, 1},
+     {30, "How many positive divisors does 12 have?",
+          {"3","4","5","6"},                               3, Category::NUMBER_THEORY, 1},
+     {31, "What is  5!  (5 factorial)?",
+          {"25","60","120","720"},                         2, Category::NUMBER_THEORY, 1},
+     {32, "Is 144 a perfect square?",
+          {"No","Yes","Only approx","Cannot determine"},   1, Category::NUMBER_THEORY, 1},
+     {33, "Remainder when 17 is divided by 5?",
+          {"1","2","3","4"},                               1, Category::NUMBER_THEORY, 1},
+    };
+}
+
+vector<Question> byCat(const vector<Question>& bank, Category c) {
+    vector<Question> out;
+    for (const auto& q : bank)
+        if (q.cat == c) out.push_back(q);
+    return out;
+}
