@@ -17,3 +17,15 @@ struct Account {
     string toCsv() const;
     static Account fromCsv(const string& line);
 };
+
+static const string ACC_FILE = "data/accounts.txt";
+
+vector<Account> loadAccounts();
+bool            saveAccounts(const vector<Account>& v);
+bool            userExists(const string& u);
+
+Account doRegister(const string& u, const string& pw, const string& name);
+Account doLogin(const string& u, const string& pw);
+
+Account screenRegister();
+Account screenLogin();
