@@ -112,3 +112,44 @@ Account screenRegister() {
     }
 }
 
+Account screenLogin() {
+    int attempts = 0;
+    while (attempts < 5) {
+        cls();
+        bTop("LOGIN");
+        bBlank();
+        bRow("  Enter your username and password.", C_DIM);
+        bBlank();
+        bDiv();
+        bRow(cen("Fill in the fields below"), C_DIM);
+        bDiv();
+        cout << "\n";
+
+        string u = inputLine("Username");
+        string p = inputLine("Password");
+
+        transform(u.begin(), u.end(), u.begin(),
+            [](unsigned char c) { return tolower(c); });
+
+        Account acc = doLogin(u, p);
+
+        cls();
+        bTop("LOGIN");
+        bBlank();
+        if (!acc.empty()) {
+            bRow(cen("Welcome back, " + acc.name + "!"), C_OK);
+            bBlank();
+            waitEnter();
+            return acc;
+        }
+        ++attempts;
+        bRow(cen("Invalid username or password."), C_ERR);
+        bBlank();
+        bDiv();
+        bRow(cen("Press ENTER to try again"), C_DIM);
+        bBot();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return {};
+}
+
