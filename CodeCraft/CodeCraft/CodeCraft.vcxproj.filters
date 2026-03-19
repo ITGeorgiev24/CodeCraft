@@ -44,5 +44,8 @@
     <ClInclude Include="include\account.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\statistics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
