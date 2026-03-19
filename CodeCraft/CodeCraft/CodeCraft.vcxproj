@@ -126,6 +126,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\account.cpp" />
     <ClCompile Include="src\mainMenu.cpp" />
+    <ClCompile Include="src\question.cpp" />
+    <ClCompile Include="src\statistics.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
