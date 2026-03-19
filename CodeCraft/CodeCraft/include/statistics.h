@@ -2,3 +2,4 @@
 // statistics.h  –  global result statistics
 // ============================================================
 #pragma once
+void showStats();
