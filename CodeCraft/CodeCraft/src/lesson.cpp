@@ -138,3 +138,89 @@ static void lessonFunctions() {
     bBlank();
     waitEnter();
 }
+
+
+// -- PROBABILITY ----------------------------------------------
+static void lessonProbability() {
+    cls();
+    bTop("LESSON  |  PROBABILITY");
+
+    sec("Basic Probability");
+    ln("P(event) = favourable outcomes / total outcomes");
+    ln("Range:  0 (impossible)  to  1 (certain)");
+    bBlank();
+    ex("P(rolling a 6) on fair die", "1/6  ~  0.167");
+    ex("P(Ace) from 52 cards", "4/52 = 1/13  ~  0.077");
+
+    sec("Combined Events");
+    ln("P(A or B)   =  P(A) + P(B) - P(A and B)");
+    ln("P(A and B)  =  P(A) * P(B)   [if independent]");
+    ln("P(not A)    =  1 - P(A)");
+    bBlank();
+    ex("P(A)=0.3, P(B)=0.4, P(A&B)=0.1  =>  P(A or B)",
+        "0.3 + 0.4 - 0.1 = 0.6");
+
+    sec("Exercises");
+    ln("[1]  Bag: 3 red, 5 green, 2 blue.  P(green)?", C_DIM);
+    ln("[2]  Flip two coins.  P(both heads)?", C_DIM);
+    ln("[3]  P(not drawing a king from 52 cards)?", C_DIM);
+    bBlank();
+    waitEnter();
+}
+
+// -- NUMBER THEORY --------------------------------------------
+static void lessonNumberTheory() {
+    cls();
+    bTop("LESSON  |  NUMBER THEORY");
+
+    sec("Prime Numbers");
+    ln("A prime has exactly 2 divisors: 1 and itself.");
+    ln("Primes:  2  3  5  7  11  13  17  19  23  29  31 ...");
+    ln("Note: 1 is neither prime nor composite.");
+    bBlank();
+
+    sec("GCF and LCM");
+    ln("GCF: largest divisor shared by all numbers.");
+    ln("LCM: smallest multiple shared by all numbers.");
+    ln("LCM(a, b)  =  (a * b) / GCF(a, b)");
+    bBlank();
+    ex("GCF(12, 18)   [12=2*2*3,  18=2*3*3]", "GCF = 2*3 = 6");
+    ex("LCM(4, 6)     [GCF=2]", "(4*6)/2 = 12");
+
+    sec("Divisibility Rules");
+    ln("Div by 2 : last digit is even");
+    ln("Div by 3 : digit sum is divisible by 3");
+    ln("Div by 5 : last digit is 0 or 5");
+    bBlank();
+
+    sec("Factorials");
+    ln("n! = n * (n-1) * ... * 2 * 1     and     0! = 1");
+    ln("Examples:  3! = 6     5! = 120     6! = 720");
+    bBlank();
+
+    sec("Exercises");
+    ln("[1]  List all primes less than 30", C_DIM);
+    ln("[2]  Find GCF(24, 36)", C_DIM);
+    ln("[3]  Calculate 7!", C_DIM);
+    bBlank();
+    waitEnter();
+}
+
+// -- Lesson menu ----------------------------------------------
+void lessonMenu() {
+    vector<string> opts = {
+        "Algebra", "Geometry", "Functions",
+        "Probability", "Number Theory", "Back"
+    };
+    while (true) {
+        int c = menuSelect("LESSONS", opts, "Select a topic to study");
+        switch (c) {
+        case 0: lessonAlgebra();      break;
+        case 1: lessonGeometry();     break;
+        case 2: lessonFunctions();    break;
+        case 3: lessonProbability();  break;
+        case 4: lessonNumberTheory(); break;
+        case 5: return;
+        }
+    }
+}
