@@ -1,25 +1,32 @@
+// ============================================================
+// include/student.h
+// TestResult struct and file persistence
+// ============================================================
 #pragma once
 #include "question.h"
 #include <string>
 #include <map>
 #include <vector>
 
-struct TestResult {
-    std::string username;
-    std::string name;
-    int  scored = 0;
-    int  maxPts = 0;
-    double percent = 0.0;
-    int  grade = 0;
-    std::map<Category, std::pair<int, int>> cats;  
+using namespace std;
 
-    std::string toCsv()            const;
-    static TestResult fromCsv(const std::string& line);
-    void display()                 const;
+static const string RES_FILE = "data/results.txt";
+
+struct TestResult {
+    string   username;
+    string   name;
+    int      scored = 0;
+    int      maxPts = 0;
+    double   percent = 0.0;
+    int      grade = 0;
+    map<Category, pair<int, int>> cats;  // {earned, max} per category
+
+    bool   empty()  const { return username.empty(); }
+    string toCsv()  const;
+    static TestResult fromCsv(const string& line);
+    void   display() const;
 };
 
-static const std::string RES_FILE = "data/results.txt";
-
-bool                    saveResult(const TestResult& r);
-std::vector<TestResult> loadResults();
-std::vector<TestResult> resultsFor(const std::string& username);
+bool               saveResult(const TestResult& r);
+vector<TestResult> loadResults();
+vector<TestResult> resultsFor(const string& username);

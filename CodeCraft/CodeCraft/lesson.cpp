@@ -2,8 +2,8 @@
 // src/lesson.cpp
 // Full lesson content for all five mathematics topics
 // ============================================================
-#include "../include/lesson.h"
-#include "../include/utils.h"
+#include "include/lesson.h"
+#include "include/utils.h"
 #include <iostream>
 #include <string>
 #include <vector>

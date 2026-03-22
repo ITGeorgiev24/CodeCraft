@@ -1,5 +1,6 @@
-// ============================================================
-// account.cpp
+﻿// ============================================================
+// src/account.cpp
+// Account persistence and interactive auth screens
 // ============================================================
 #include "../include/account.h"
 #include "../include/utils.h"
@@ -12,7 +13,7 @@
 
 using namespace std;
 
-// -- Serialisation --------------------------------------------
+// ── Serialisation ────────────────────────────────────────────
 string Account::toCsv() const {
     return username + "|" + pwHash + "|" + name;
 }
@@ -26,13 +27,14 @@ Account Account::fromCsv(const string& line) {
     return a;
 }
 
-// -- File I/O -------------------------------------------------
+// ── File I/O ─────────────────────────────────────────────────
 vector<Account> loadAccounts() {
     vector<Account> v;
     ifstream f(ACC_FILE);
     string line;
     while (getline(f, line))
-        if (!line.empty()) v.push_back(Account::fromCsv(line));
+        if (!line.empty())
+            v.push_back(Account::fromCsv(line));
     return v;
 }
 
@@ -48,10 +50,13 @@ bool userExists(const string& u) {
     return false;
 }
 
-// -- Register / Login -----------------------------------------
+// ── Register / Login ─────────────────────────────────────────
 Account doRegister(const string& u, const string& pw, const string& name) {
-    if (u.size() < 3 || pw.size() < 4 || name.empty()) return {};
-    if (userExists(u)) return {};
+    if ((int)u.size() < 3)    return {};
+    if ((int)pw.size() < 4)   return {};
+    if (name.empty())          return {};
+    if (userExists(u))         return {};
+
     Account a{ u, hashPwd(pw), name };
     auto v = loadAccounts();
     v.push_back(a);
@@ -65,16 +70,16 @@ Account doLogin(const string& u, const string& pw) {
     return {};
 }
 
-// -- Interactive screens --------------------------------------
+// ── Interactive screens ──────────────────────────────────────
 Account screenRegister() {
     while (true) {
         cls();
-        bTop("REGISTER");
+        bTop("EduRise  |  Register");
         bBlank();
-        bRow("  Create a new account to track your results.", C_DIM);
+        bRow("  Create a new account to track your progress.", C_DIM);
         bBlank();
-        bRow("  Username  :  min. 3 characters", C_DIM);
-        bRow("  Password  :  min. 4 characters", C_DIM);
+        bRow("  Username  :  minimum 3 characters", C_DIM);
+        bRow("  Password  :  minimum 4 characters", C_DIM);
         bRow("  Full name :  your real name", C_DIM);
         bBlank();
         bDiv();
@@ -86,13 +91,14 @@ Account screenRegister() {
         string p = inputLine("Password ");
         string n = inputLine("Full name");
 
+        // Normalise username to lowercase
         transform(u.begin(), u.end(), u.begin(),
-            [](unsigned char c) { return tolower(c); });
+            [](unsigned char c) { return (char)tolower(c); });
 
         Account acc = doRegister(u, p, n);
 
         cls();
-        bTop("REGISTER");
+        bTop("EduRise  |  Register");
         bBlank();
         if (!acc.empty()) {
             bRow(cen("Account created!  Welcome, " + acc.name + "!"), C_OK);
@@ -100,9 +106,10 @@ Account screenRegister() {
             waitEnter();
             return acc;
         }
+
         string err = userExists(u)
             ? "Username '" + u + "' is already taken."
-            : "Input too short. Check the requirements.";
+            : "Input too short. Please check the requirements.";
         bRow(cen(err), C_ERR);
         bBlank();
         bDiv();
@@ -116,7 +123,7 @@ Account screenLogin() {
     int attempts = 0;
     while (attempts < 5) {
         cls();
-        bTop("LOGIN");
+        bTop("EduRise  |  Login");
         bBlank();
         bRow("  Enter your username and password.", C_DIM);
         bBlank();
@@ -129,12 +136,12 @@ Account screenLogin() {
         string p = inputLine("Password");
 
         transform(u.begin(), u.end(), u.begin(),
-            [](unsigned char c) { return tolower(c); });
+            [](unsigned char c) { return (char)tolower(c); });
 
         Account acc = doLogin(u, p);
 
         cls();
-        bTop("LOGIN");
+        bTop("EduRise  |  Login");
         bBlank();
         if (!acc.empty()) {
             bRow(cen("Welcome back, " + acc.name + "!"), C_OK);
@@ -142,6 +149,7 @@ Account screenLogin() {
             waitEnter();
             return acc;
         }
+
         ++attempts;
         bRow(cen("Invalid username or password."), C_ERR);
         bBlank();
@@ -152,4 +160,3 @@ Account screenLogin() {
     }
     return {};
 }
-
