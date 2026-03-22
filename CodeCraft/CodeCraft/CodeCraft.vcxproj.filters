@@ -36,6 +36,9 @@
     <ClCompile Include="src\student.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\quiz 1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\mainMenu.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\question.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -127,6 +127,7 @@
     <ClCompile Include="src\account.cpp" />
     <ClCompile Include="src\mainMenu.cpp" />
     <ClCompile Include="src\question.cpp" />
+    <ClCompile Include="src\quiz 1.cpp" />
     <ClCompile Include="src\statistics.cpp" />
     <ClCompile Include="src\student.cpp" />
     <ClCompile Include="src\utils.cpp" />
@@ -134,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="include\account.h" />
     <ClInclude Include="include\mainMenu.h" />
+    <ClInclude Include="include\question.h" />
     <ClInclude Include="include\statistics.h" />
     <ClInclude Include="include\student.h" />
     <ClInclude Include="include\utils.h" />
