@@ -178,13 +178,11 @@ void bRow(const string& text, const string& col) {
 
 // ── EduRise ASCII-art banner ─────────────────────────────────
 void bBanner() {
-    // 4-row block-letter art for "EduRise", max 40 chars wide
-    // Centred inside BW=58 box
     static const char* ART[] = {
-        "  ___  ___  _   _  ___   _  ___  ___ ",
-        " | __||   || |  | ||   \\ | |/ __|| __|",
-        " | _| | |) || |_ | || |) || |\\__ \\| _| ",
-        " |___||___/ \\___/ |_||___/ |_||___/|___|"
+        "  ___     _       ___  _           ",
+        " | __| __| |_  _ | _ \\(_)___ ___   ",
+        " | _| / _` | || ||   /| (_-</ -_)  ",
+        " |___|\\__,_|\\_,_||_|_\\|_/__/\\___|  "
     };
     bBlank();
     for (int i = 0; i < 4; ++i)
