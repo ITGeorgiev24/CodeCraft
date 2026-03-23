@@ -1,5 +1,7 @@
 // ============================================================
-// lesson.h  --  lesson content for all five math topics
+// include/lesson.h
+// Lesson content for all five math topics
 // ============================================================
 #pragma once
+
 void lessonMenu();

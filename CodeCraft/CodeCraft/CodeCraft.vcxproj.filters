@@ -36,10 +36,10 @@
     <ClCompile Include="src\quiz.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lesson.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\lesson.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClInclude Include="include\quiz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lesson.h">
+    <ClInclude Include="include\lesson.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
