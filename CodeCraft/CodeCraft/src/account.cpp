@@ -1,17 +1,48 @@
-﻿// ============================================================
-// src/account.cpp
-// Account persistence and interactive auth screens
-// ============================================================
-#include "../include/account.h"
+﻿#include "../include/account.h"
 #include "../include/utils.h"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <limits>
 #include <cctype>
+#include <conio.h>
 
 using namespace std;
+
+// ── ESC-aware centered input ──────────────────────────────────
+string inputLineEsc(const string& label) {
+    string input;
+
+    while (true) {
+        cls();
+        bTop("EduRise");
+        bBlank();
+
+        bRow(cen("Fill in the fields below (ESC to go back)"), C_DIM);
+        bBlank();
+
+        string display = label + ": " + input;
+        bRow(cen(display));
+
+        bBlank();
+        bDiv();
+        bRow(cen("Press ENTER to confirm"), C_DIM);
+        bBot();
+
+        char ch = _getch();
+
+        if (ch == 27) return "__ESC__";       // ESC
+        else if (ch == '\r') return input;    // ENTER
+        else if (ch == '\b') {                // BACKSPACE
+            if (!input.empty()) input.pop_back();
+        }
+        else {
+            input += ch;
+        }
+    }
+}
 
 // ── Serialisation ────────────────────────────────────────────
 string Account::toCsv() const {
@@ -52,10 +83,10 @@ bool userExists(const string& u) {
 
 // ── Register / Login ─────────────────────────────────────────
 Account doRegister(const string& u, const string& pw, const string& name) {
-    if ((int)u.size() < 3)    return {};
-    if ((int)pw.size() < 4)   return {};
-    if (name.empty())          return {};
-    if (userExists(u))         return {};
+    if ((int)u.size() < 3) return {};
+    if ((int)pw.size() < 4) return {};
+    if (name.empty()) return {};
+    if (userExists(u)) return {};
 
     Account a{ u, hashPwd(pw), name };
     auto v = loadAccounts();
@@ -83,15 +114,18 @@ Account screenRegister() {
         bRow("  Full name :  your real name", C_DIM);
         bBlank();
         bDiv();
-        bRow(cen("Fill in the fields below"), C_DIM);
+        bRow(cen("Fill in the fields below (ESC to go back)"), C_DIM);
         bDiv();
-        cout << "\n";
 
-        string u = inputLine("Username ");
-        string p = inputLine("Password ");
-        string n = inputLine("Full name");
+        string u = inputLineEsc("Username");
+        if (u == "__ESC__") return {};
 
-        // Normalise username to lowercase
+        string p = inputLineEsc("Password");
+        if (p == "__ESC__") return {};
+
+        string n = inputLineEsc("Full name");
+        if (n == "__ESC__") return {};
+
         transform(u.begin(), u.end(), u.begin(),
             [](unsigned char c) { return (char)tolower(c); });
 
@@ -100,6 +134,7 @@ Account screenRegister() {
         cls();
         bTop("EduRise  |  Register");
         bBlank();
+
         if (!acc.empty()) {
             bRow(cen("Account created!  Welcome, " + acc.name + "!"), C_OK);
             bBlank();
@@ -110,10 +145,11 @@ Account screenRegister() {
         string err = userExists(u)
             ? "Username '" + u + "' is already taken."
             : "Input too short. Please check the requirements.";
+
         bRow(cen(err), C_ERR);
         bBlank();
         bDiv();
-        bRow(cen("Press ENTER to try again"), C_DIM);
+        bRow(cen("Press ENTER to try again (ESC to go back)"), C_DIM);
         bBot();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
@@ -121,6 +157,7 @@ Account screenRegister() {
 
 Account screenLogin() {
     int attempts = 0;
+
     while (attempts < 5) {
         cls();
         bTop("EduRise  |  Login");
@@ -128,12 +165,14 @@ Account screenLogin() {
         bRow("  Enter your username and password.", C_DIM);
         bBlank();
         bDiv();
-        bRow(cen("Fill in the fields below"), C_DIM);
+        bRow(cen("Fill in the fields below (ESC to go back)"), C_DIM);
         bDiv();
-        cout << "\n";
 
-        string u = inputLine("Username");
-        string p = inputLine("Password");
+        string u = inputLineEsc("Username");
+        if (u == "__ESC__") return {};
+
+        string p = inputLineEsc("Password");
+        if (p == "__ESC__") return {};
 
         transform(u.begin(), u.end(), u.begin(),
             [](unsigned char c) { return (char)tolower(c); });
@@ -143,6 +182,7 @@ Account screenLogin() {
         cls();
         bTop("EduRise  |  Login");
         bBlank();
+
         if (!acc.empty()) {
             bRow(cen("Welcome back, " + acc.name + "!"), C_OK);
             bBlank();
@@ -154,9 +194,10 @@ Account screenLogin() {
         bRow(cen("Invalid username or password."), C_ERR);
         bBlank();
         bDiv();
-        bRow(cen("Press ENTER to try again"), C_DIM);
+        bRow(cen("Press ENTER to try again (ESC to go back)"), C_DIM);
         bBot();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
+
     return {};
 }

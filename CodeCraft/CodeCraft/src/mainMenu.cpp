@@ -58,7 +58,7 @@ static Account authScreen() {
         int c = menuSelect(
             "EduRise",
             { "Login", "Register", "Exit" },
-            "Mathematics  |  Grade 9  |  PGCPI Burgas 2025/2026",
+            "Mathematics  |  Grade 9",
             true    // show the big EduRise ASCII-art banner
         );
 
