@@ -1,6 +1,6 @@
 <h1 align="center"> CodeCraft </h1>
 <div align="center">
-<img width="1024" height="1024" alt="logo" src="https://github.com/user-attachments/assets/cde9ff82-7d7a-46ea-a30f-740da8955092"/>
+<img width="450" height="450" alt="logo" src="https://github.com/user-attachments/assets/cde9ff82-7d7a-46ea-a30f-740da8955092"/>
 </div>
 <br>
 <!-- TABLE OF CONTENTS -->
@@ -67,9 +67,9 @@ Email: IEGeorgiev24@codingburgas.bg
 <h2 id="documentation">📄Documentation</h2> 
 <hr>
 
-<img src="https://github.com/user-attachments/assets/3ad0c148-6e5a-4e1b-ba16-82f53b41d500" width="30" alt="MS Word Logo"> <a href="">Documentation</a>
+<img src="https://github.com/user-attachments/assets/3ad0c148-6e5a-4e1b-ba16-82f53b41d500" width="30" alt="MS Word Logo"> <a href="https://codingburgas-my.sharepoint.com/:w:/g/personal/itgeorgiev24_codingburgas_bg/IQDa7ZqJmL61QZQitZqhUlLYAbI1Rf5T_A6ubo0QxhgqPFA?rtime=PQ4j882J3kg">Documentation</a>
 <br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Microsoft_PowerPoint_Logo.png" width="20" alt="MS PowerPoint Logo"> <a href="">Presentation</a>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Microsoft_PowerPoint_Logo.png" width="20" alt="MS PowerPoint Logo"> <a href="https://codingburgas-my.sharepoint.com/:p:/g/personal/itgeorgiev24_codingburgas_bg/IQCFlM6nF-EzRolU1wES6nd_AT2-2hJGNlGVQS-OCti7CG0?wdOrigin=TEAMS-MAGLEV.p2p_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1774374727172&web=1">Presentation</a>
 <br>
 
 </p>
