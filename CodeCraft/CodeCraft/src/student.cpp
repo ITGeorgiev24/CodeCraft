@@ -1,7 +1,4 @@
-﻿// ============================================================
-// src/student.cpp
-// ============================================================
-#include "../include/student.h"
+﻿#include "../include/student.h"
 #include "../include/utils.h"
 #include <iostream>
 #include <fstream>
@@ -75,7 +72,6 @@ bool saveResult(const TestResult& r) {
     return f.good();
 }
 
-// Fixed: proper braces around the try/catch inside the while loop
 vector<TestResult> loadResults() {
     vector<TestResult> v;
     ifstream f(RES_FILE);

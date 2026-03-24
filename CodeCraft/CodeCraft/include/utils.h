@@ -1,8 +1,3 @@
-// ============================================================
-// include/utils.h
-// Display, menus, input helpers, grading
-// Pure ASCII box - works on Windows CMD and any Linux terminal
-// ============================================================
 #pragma once
 #include <string>
 #include <vector>
@@ -25,11 +20,11 @@ using namespace std;
 static const int BW = 58;
 
 // ── Platform init ─────────────────────────────────────────────
-void initConsole();   // enables ANSI + UTF-8 on Windows
+void initConsole();
 
 // ── Screen ───────────────────────────────────────────────────
 void cls();
-void waitEnter();     // draws footer then waits for ENTER
+void waitEnter();
 
 // ── Box primitives ───────────────────────────────────────────
 void bTop(const string& title = "");
@@ -39,12 +34,9 @@ void bBlank();
 void bRow(const string& text, const string& col = C_TXT);
 
 // ── EduRise banner ───────────────────────────────────────────
-// Prints the big ASCII-art app name inside the box.
 void bBanner();
 
 // ── Arrow-key menu ───────────────────────────────────────────
-// showBanner = true -> draws bBanner() at the top of the menu.
-// Returns 0-based index of chosen option, or -1 if ESC pressed.
 int menuSelect(const string& title,
     const vector<string>& opts,
     const string& sub = "",

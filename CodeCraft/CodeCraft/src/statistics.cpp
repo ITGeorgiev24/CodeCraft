@@ -1,8 +1,4 @@
-﻿// ============================================================
-// src/statistics.cpp
-// Global statistics report with bar charts
-// ============================================================
-#include "../include/statistics.h"
+﻿#include "../include/statistics.h"
 #include "../include/student.h"
 #include "../include/utils.h"
 #include <iostream>
@@ -14,7 +10,6 @@
 using namespace std;
 
 // Draws a percentage bar inside the box
-// Example:  "Algebra        [##########          ]  45.0%"
 static void barRow(const string& label, double p) {
     int filled = min(24, (int)(p / 100.0 * 24.0));
     string bar = "[" + string(filled, '#')

@@ -33,9 +33,9 @@ string inputLineEsc(const string& label) {
 
         char ch = _getch();
 
-        if (ch == 27) return "__ESC__";       // ESC
-        else if (ch == '\r') return input;    // ENTER
-        else if (ch == '\b') {                // BACKSPACE
+        if (ch == 27) return "__ESC__";
+        else if (ch == '\r') return input;
+        else if (ch == '\b') {
             if (!input.empty()) input.pop_back();
         }
         else {

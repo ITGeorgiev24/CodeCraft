@@ -1,12 +1,3 @@
-// ============================================================
-// src/mainMenu.cpp
-// Single entry point called by main().
-// Handles everything after program start:
-//   - data folder creation
-//   - console init
-//   - auth screen (Login / Register / Exit)
-//   - main menu loop (Lessons, Practice, Test, Results, Stats)
-// ============================================================
 #include "../include/utils.h"
 #include "../include/account.h"
 #include "../include/question.h"
@@ -51,18 +42,16 @@ static void myResults(const Account& user) {
 }
 
 // -- Auth screen ----------------------------------------------
-// Shows the EduRise banner + Login / Register / Exit.
-// Returns the logged-in Account once credentials are accepted.
 static Account authScreen() {
     while (true) {
         int c = menuSelect(
             "EduRise",
             { "Login", "Register", "Exit" },
             "Mathematics  |  Grade 9",
-            true    // show the big EduRise ASCII-art banner
+            true
         );
 
-        if (c == -1 || c == 2) {   // ESC or Exit
+        if (c == -1 || c == 2) {
             cls();
             bTop("EduRise  |  Goodbye");
             bBlank();
@@ -96,10 +85,10 @@ static void runMenu(const Account& user, const vector<Question>& bank) {
                 "Logout"
             },
             "Logged in as: " + user.name,
-            true    // show the EduRise ASCII-art banner
+            true
         );
 
-        if (c == -1 || c == 5) return;   // ESC or Logout
+        if (c == -1 || c == 5) return;
 
         switch (c) {
         case 0:
@@ -139,8 +128,6 @@ static void runMenu(const Account& user, const vector<Question>& bank) {
 }
 
 // -- mainMenu() -----------------------------------------------
-// This is the function called directly from main().
-// It sets everything up and runs the full program loop.
 void mainMenu() {
     ensureData();
     initConsole();

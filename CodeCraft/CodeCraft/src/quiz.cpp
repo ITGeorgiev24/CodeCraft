@@ -1,8 +1,4 @@
-﻿// ============================================================
-// src/quiz.cpp
-// Test generation (random sampling) and interactive test runner
-// ============================================================
-#include "../include/quiz.h"
+﻿#include "../include/quiz.h"
 #include "../include/utils.h"
 #include <iostream>
 #include <algorithm>

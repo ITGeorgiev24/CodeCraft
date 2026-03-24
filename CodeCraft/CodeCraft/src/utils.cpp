@@ -1,11 +1,5 @@
-﻿// ============================================================
-// src/utils.cpp
-// ============================================================
+﻿#define NOMINMAX
 
-// Must be first - stops <windows.h> defining min/max macros
-#define NOMINMAX
-
-// All standard includes before platform-specific ones
 #include "../include/utils.h"
 #include <iostream>
 #include <sstream>
@@ -14,7 +8,6 @@
 #include <limits>
 #include <cstdlib>
 
-// Platform-specific includes AFTER standard library
 #ifdef _WIN32
 #include <conio.h>
 #include <windows.h>
@@ -24,7 +17,6 @@
 #include <sys/ioctl.h>
 #endif
 
-// using namespace after ALL includes
 using namespace std;
 
 // ── Key codes ────────────────────────────────────────────────
@@ -86,13 +78,11 @@ static int getKey() {
 
 // ── Internal helpers ─────────────────────────────────────────
 
-// Left margin to centre the box in the terminal
 static int margin() {
     int m = (consoleWidth() - (BW + 2)) / 2;
     return (m > 0) ? m : 0;
 }
 
-// Repeat a character n times
 static string rep(char c, int n) {
     return (n > 0) ? string(n, c) : string();
 }
@@ -214,10 +204,8 @@ int menuSelect(const string& title,
         bBlank();
         for (int i = 0; i < n; ++i) {
             if (i == sel)
-                // Selected - centred with >> << in bright green
                 bRow(cen(">>  " + opts[i] + "  <<"), C_SEL);
             else
-                // Unselected - same centre position, no markers
                 bRow(cen("    " + opts[i] + "    "), C_TXT);
         }
         bBlank();
@@ -249,7 +237,6 @@ int answerPick(const string& question,
             + (pts > 1 ? " pts" : " pt")), C_DIM);
         bDiv();
 
-        // Word-wrap the question at BW-4 chars per line
         string q = question;
         int    lineW = BW - 4;
         while (!q.empty()) {

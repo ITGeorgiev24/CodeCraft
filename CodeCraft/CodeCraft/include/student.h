@@ -1,7 +1,3 @@
-// ============================================================
-// include/student.h
-// TestResult struct and file persistence
-// ============================================================
 #pragma once
 #include "question.h"
 #include <string>

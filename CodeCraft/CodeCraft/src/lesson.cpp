@@ -1,8 +1,4 @@
-﻿// ============================================================
-// src/lesson.cpp
-// Full lesson content for all five mathematics topics
-// ============================================================
-#include "../include/lesson.h"
+﻿#include "../include/lesson.h"
 #include "../include/utils.h"
 #include <iostream>
 #include <string>
@@ -246,7 +242,7 @@ void lessonMenu() {
         int c = menuSelect("EduRise  |  Lessons",
             opts,
             "Select a topic to study");
-        if (c == -1 || c == 5) return;   // ESC or Back
+        if (c == -1 || c == 5) return;
         switch (c) {
         case 0: lessonAlgebra();      break;
         case 1: lessonGeometry();     break;

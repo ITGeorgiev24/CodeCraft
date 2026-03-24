@@ -1,7 +1,3 @@
-// ============================================================
-// include/question.h
-// Question struct, Category enum, 33-question bank loader
-// ============================================================
 #pragma once
 #include <string>
 #include <vector>
@@ -22,8 +18,8 @@ vector<Category> allCats();
 struct Question {
     int            id;
     string         text;
-    vector<string> opts;    // exactly 4 choices
-    int            correct; // 0-3  (A-D)
+    vector<string> opts;
+    int            correct;
     Category       cat;
     int            pts;
 

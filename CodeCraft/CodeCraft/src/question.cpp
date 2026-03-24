@@ -1,8 +1,4 @@
-﻿// ============================================================
-// src/question.cpp
-// Category helpers and full 33-question mathematics bank
-// ============================================================
-#include "../include/question.h"
+﻿#include "../include/question.h"
 
 using namespace std;
 
@@ -28,7 +24,6 @@ vector<Category> allCats() {
 }
 
 // ── Full question bank ───────────────────────────────────────
-// Format: { id, "text", {"A","B","C","D"}, correctIdx(0-3), Category, pts }
 vector<Question> makeBank() {
     return {
 
